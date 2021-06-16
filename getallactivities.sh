@@ -1,0 +1,2 @@
+python3 garmin-connect-export/gcexport.py --username $gce_user --password $gce_pass -c 'all' -d './database' -s 'NewActivities' -f json
+python3 garmin-connect-export/gcexport.py --username $gce_user --password $gce_pass -c 'all' -d './database' -s 'NewActivities' -f gpx

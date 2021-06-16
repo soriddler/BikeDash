@@ -1,7 +1,9 @@
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import logging
 
+logging.basicConfig(filename="app.log", level=logging.DEBUG)
 
 class Watcher:
     DIRECTORY_TO_WATCH = "."
@@ -18,7 +20,7 @@ class Watcher:
                 time.sleep(5)
         except:
             self.observer.stop()
-            print ("Error")
+            logging.error("Stopping the Watcher...")
 
         self.observer.join()
 
@@ -32,13 +34,18 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'created':
             # Take any action here when a file is first created.
-            print (f"Received created event - {event.src_path}")
+            logging.debug (f"Received created event - {event.src_path}")
 
         elif event.event_type == 'modified':
             # Taken any action here when a file is modified.
-            print (f"Received modified event - {event.src_path}")
+            logging.info (f"Received modified event - {event.src_path}")
+
+        elif event.event_type == 'moved':
+            # Taken any action here when a file is modified.
+            logging.info (f"Received moved event - {event.src_path} to {event.dest_path}")
 
 
 if __name__ == '__main__':
     w = Watcher()
+    w.DIRECTORY_TO_WATCH = "."
     w.run()

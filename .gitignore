@@ -1,5 +1,6 @@
 garmin-connect-export/
-GarminDump/
+database/
+config.env
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
