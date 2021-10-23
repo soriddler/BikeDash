@@ -18,8 +18,8 @@ Download the activities with json descriptions and the corresponding gpx files
 In order to "savely store" credentials and not accidentially commiting them the use of environment variables is the preffered solution.
 
 ```
-export gce_user=blabla
-export gce_pass=secret
+export gce_user='blabla' (single quote required)
+export gce_user='secret' (single quote required)
 ```
 
 call the following to download the most recent 10 activities in JSON as well as GPX format.
